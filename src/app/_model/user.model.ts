@@ -5,3 +5,9 @@ export interface userregister {
     email: string;
     password: string
 }
+
+export interface registerconfirm {
+    userid: number;
+    username: string;
+    otptext: string;
+}

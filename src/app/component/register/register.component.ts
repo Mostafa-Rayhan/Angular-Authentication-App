@@ -3,7 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { userregister } from '../../_model/user.model';
+import { registerconfirm, userregister } from '../../_model/user.model';
 import { UserService } from '../../_service/user.service';
 
 @Component({
@@ -47,12 +47,12 @@ export class RegisterComponent {
         this._response = item;
         console.log(this._response);
         if (this._response.result == 'pass') {
-          // let _confirmobj: registerconfirm = {
-          //   userid: this._response.message,
-          //   username: _obj.userName,
-          //   otptext: ''
-          // }
-          // this.service._registerresp.set(_confirmobj);
+          let _confirmobj: registerconfirm = {
+            userid: this._response.message,
+            username: _obj.userName,
+            otptext: ''
+          }
+          this.service._registerresp.set(_confirmobj);
           this.toastr.success('Validate OTP & complete the registeration', 'Registeration');
           this.router.navigateByUrl('/confirmotp');
         } else {
