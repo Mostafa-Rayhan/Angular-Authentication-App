@@ -41,4 +41,8 @@ export class UserService {
   Resetpassword(_data: resetpassword) {
     return this.http.post(this.baseUrl + 'User/resetpassword', _data);
   }
+
+  Forgetpassword(username: string) {
+    return this.http.get(this.baseUrl + 'User/forgetpassword?username=' + username)
+  }
 }
